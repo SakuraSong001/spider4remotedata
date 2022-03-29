@@ -3,6 +3,8 @@ import csv
 import time
 import re
 import ssl
+import numpy as np
+import pandas as pd
 from bs4 import BeautifulSoup
 from six.moves import urllib
 import requests
@@ -15,7 +17,14 @@ header = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.30',
     'Connection': 'keep-alive'
 }
-
+opener = urllib.request.build_opener()
+opener.addheaders = [('User-agent',
+                      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36 Edg/99.0.1150.46'),
+                     ('Cookie',
+                      '_ga=GA1.2.479127296.1609393316; _ga=GA1.4.479127296.1609393316'), (
+                     'Accept',
+                     'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9')]
+urllib.request.install_opener(opener)
 session = requests.session()
 driver = webdriver.Edge()
 
@@ -47,7 +56,7 @@ def get_stations(area_file):
     # print(result, file=open(area_file, 'w', encoding='utf-8'))
     result = np.array(result)
     dataframe = pd.DataFrame(
-        {'station': result[:, 0], 'geoInfo': result[:, 1], 'pageUrl': result[:, 2], 'start_year': statList[:, 3],
+        {'station': result[:, 0], 'geoInfo': result[:, 1], 'pageUrl': result[:, 2], 'start_year': result[:, 3],
          'latest_year': result[:, 4]}
     )
     dataframe.to_csv(area_file, index=False, sep=',', encoding='utf-8')
@@ -98,36 +107,35 @@ if __name__ == '__main__':
                 if os.path.exists(filepath):
                     print('exist ', year, url)
                     continue
-
-                # 模拟检索动作
-
-                statUrl = 'https://aeronet.gsfc.nasa.gov/cgi-bin/' + statHref.replace('®', '&re')
-                driver.get(statUrl)
-                time.sleep(3)
                 try:
-                    select1 = Select(driver.find_element(By.XPATH, '//*[@id="Year1"]'))
-                    select1.select_by_visible_text(str(year))
-                except NoSuchElementException:
-                    print('No such year ', year, url)
-                    break
-                select2 = Select(driver.find_element(By.XPATH, '//*[@id="Year2"]'))
-                select2.select_by_visible_text(str(year))
-                try:
-                    aod15_checkbox = driver.find_element(By.NAME, 'AOD15')
-                    aod15_checkbox.click()
-                except NoSuchElementException:
-                    print('No such aod 1.5 ', year, url)
-                    break
-                submit = driver.find_element(By.NAME, 'Submit')
-                submit.click()
-                time.sleep(30)
-                try:
-                    opener = urllib.request.build_opener()
-                    opener.addheaders = [('User-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36 Edg/99.0.1150.46'), ('Cookie', '_ga=GA1.2.479127296.1609393316; _ga=GA1.4.479127296.1609393316'),('Accept','text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9')]
-                    urllib.request.install_opener(opener)
                     urllib.request.urlretrieve(url, filepath)
                     print('Done ', year, url)
                 except urllib.error.HTTPError:
-                    print('Not Found', year, url)
-                    print(stat, year, url, file=open(r'F:\WORKSPACE\DBN-PARASOL\aeronet data 1.5\notfound.txt', 'a', encoding='utf-8'))
+                    # 模拟检索动作
+                    statUrl = 'https://aeronet.gsfc.nasa.gov/cgi-bin/' + statHref.replace('®', '&re')
+                    driver.get(statUrl)
+                    time.sleep(3)
+                    try:
+                        select1 = Select(driver.find_element(By.XPATH, '//*[@id="Year1"]'))
+                        select1.select_by_visible_text(str(year))
+                    except NoSuchElementException:
+                        print('No such year ', year, url)
+                        break
+                    select2 = Select(driver.find_element(By.XPATH, '//*[@id="Year2"]'))
+                    select2.select_by_visible_text(str(year))
+                    try:
+                        aod15_checkbox = driver.find_element(By.NAME, 'AOD15')
+                        aod15_checkbox.click()
+                    except NoSuchElementException:
+                        print('No such aod 1.5 ', year, url)
+                        break
+                    submit = driver.find_element(By.NAME, 'Submit')
+                    submit.click()
+                    time.sleep(30)
+                    try:
+                        urllib.request.urlretrieve(url, filepath)
+                        print('Done ', year, url)
+                    except urllib.error.HTTPError:
+                        print('Not Found', year, url)
+                        print(stat, year, url, file=open(r'F:\WORKSPACE\DBN-PARASOL\aeronet data 1.5\notfound.txt', 'a', encoding='utf-8'))
 
