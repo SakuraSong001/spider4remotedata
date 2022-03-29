@@ -1,0 +1,41 @@
+ul#data_sources {
+   width: 179px ;
+   float: left ;
+   margin: 0 0 1px 0;
+   padding: 0 ;
+   color: #FFFF00 ;
+   background: #666666 ;
+}
+   /* the header for the list of data sources */
+   ul#data_sources lh {
+      width: 179px ;
+      height: 20px ;
+      margin: 0 0 0 0 ;
+      padding: 5px 0 0 5px ;
+      border-top: #FFF solid 1px ;
+      display: block ;
+   }
+   /* The data sources themselves
+       are centered vertically in little boxes. */
+   ul#data_sources li {
+      width: 179px ;
+      height: 20px ;
+      margin: 0 0 0 0 ;
+      padding: 5px 0 0 0 ;
+      display: block ;
+   }
+   /* The data sources are links, so we
+       control the text appearance here. */
+   ul#data_sources a {
+      color: #FFF ;
+      padding: 5px 0 0 1.5em ;
+   }
+/* For print, the background image will probably
+   not appear, so put a gray box around
+   the list */
+@media print {
+ul#data_sources {
+    border: thin solid #CCCCCC;
+}
+}
+

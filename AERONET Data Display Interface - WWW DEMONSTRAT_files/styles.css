@@ -1,0 +1,212 @@
+BODY {
+	MARGIN: 0px; 
+	BACKGROUND-COLOR: #000000; 
+	FONT-SIZE: 11px; 
+	COLOR: #000000; 
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+	}
+
+TABLE {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+	}
+
+TD {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+	}
+
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+	}
+	
+FORM {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+	}
+
+INPUT {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+	}
+
+SELECT {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+	}
+
+H1 {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold
+	}
+
+H2 {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold
+	}
+
+H3 {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold
+	}
+
+H4 {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold
+	}
+
+H5 {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold
+	}
+
+H6 {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold
+	}
+	
+
+A {
+	TEXT-DECORATION: none;
+	}
+
+A:link {
+	color: #006699;
+	}
+
+A:hover {
+	TEXT-DECORATION: underline
+	}
+
+.bold {
+	FONT-WEIGHT: bold
+	}
+
+.boldTitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px
+	}
+
+.italic {
+	FONT-STYLE: italic
+	}
+
+.light {
+	COLOR: #484848
+	}
+
+.small {
+	FONT-SIZE: 10px
+	}
+
+.headerLnk {
+	COLOR: #666666; LINE-HEIGHT: 18px
+	}
+
+.footerLnk {
+	COLOR: #000000
+	}
+
+.sectionLnk {
+	FONT-SIZE: 12px; COLOR: #ffffff !important;
+	}
+
+.featureTitle
+{
+   FONT-FAMILY: Arial, Helvetica, sans-serif;
+   font-size: 14px;
+   font-weight: bold;
+   color: #000000;
+}
+
+.featureText
+{
+   FONT-FAMILY: Arial, Helvetica, sans-serif;
+   font-size: 12px;
+   color: #000000;
+}
+
+.featureLnk {
+	COLOR: #006699
+	}
+
+.search {
+	WIDTH: 102px; HEIGHT: 17px
+	}
+
+.mynasa {
+	WIDTH: 165px; HEIGHT: 17px
+	}
+
+.bannerLnk {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffffff
+	}
+
+.bannerTxt {
+	FONT-WEIGHT: bold; COLOR: #0398e8
+	}
+
+.navLnkBlack {
+	COLOR: #000000; LINE-HEIGHT: 18px
+	}
+
+.navLnkBlue {
+	COLOR: #006699; LINE-HEIGHT: 18px
+	}
+
+.navLnkRed {
+	COLOR: #ff3333; LINE-HEIGHT: 18px
+	}
+
+.fact {
+	FONT-SIZE: 13px; COLOR: #484848
+	}
+
+.factBlue {
+	COLOR: #006699
+	}
+
+.factRed {
+	COLOR: #ff3333
+	}
+
+.introLnk {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #009eff
+	}
+
+.introTxt {
+	FONT-SIZE: 12px; COLOR: #ffffff
+	}
+
+.featureLnkSelect {
+	COLOR: #006699; TEXT-DECORATION: underline
+	}
+
+.boldFeature {
+	FONT-WEIGHT: bold; COLOR: #006699
+	}
+
+.headlineLnk {
+	FONT-WEIGHT: bold; COLOR: #333333
+	}
+
+.detailBodyLnk {
+	COLOR: #006699; TEXT-DECORATION: underline
+	}
+
+.detailBodyItem {
+	COLOR: #006699
+	}
+
+.detailImageDesc {
+	COLOR: #999999
+	}
+
+.relevanceOn {
+	COLOR: #999999
+	}
+
+.relevanceOff {
+	COLOR: #cccccc
+	}
+
+.resultsMeter {
+	LETTER-SPACING: 1px
+	}
+
+.resultsMeterMiss {
+	COLOR: #cccccc; LETTER-SPACING: 1px
+	}
+
+.boldFeatureLg { FONT-WEIGHT: bolder; COLOR: #006699 ; font-size: medium; line-height: 25px
+	}
+
