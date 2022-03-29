@@ -1,9 +1,10 @@
 # aeronet_spider
 
 AErosol RObotic NETwork (AERONET)是由NASA 和 LOA-PHOTONS (CNRS) 联合建立的地基气溶胶遥感观测网，提供对不同气溶胶状态下的光谱气溶胶光学深度（AOD），
-反演产物和可沉淀水的全球分布式观测。官网地址：[Aerosol Robotic Network (AERONET) Homepage (nasa.gov)](https://aeronet.gsfc.nasa.gov/)
-
+反演产物和可沉淀水的全球分布式观测。
 现行版本 3 AOD 数据提供：级别 1.0（未筛选）、级别 1.5（云筛选和质量控制）和级别 2.0（质量保证）。
+
+官网地址：[Aerosol Robotic Network (AERONET) Homepage (nasa.gov)](https://aeronet.gsfc.nasa.gov/)
 
 
 ![Aerosol Robotic Network (AERONET) Homepage (nasa.gov)](https://aeronet.gsfc.nasa.gov/cgi-bin/bamgomas_maps_v3?long1=-180&long2=180&lat1=-90&lat2=90&multiplier=2&what_map=4&level=1&place_code=10&place_limit=0)
