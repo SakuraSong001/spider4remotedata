@@ -1,3 +1,18 @@
+"""
+Created on Thurs Mar  1 15:14:42 2022
+@author: Evelyn Song
+
+Download Aeronet Data -- AOD 1.5
+
+Python script to automatically download version 3 AOD1.5 data in zip format for a specified region and time range from AERONET Web Data Service Help platform.
+
+More information: Check AERONET Version 3 Web Service Help
+https://aeronet.gsfc.nasa.gov/cgi-bin/print_web_data_v3
+
+"""
+
+
+
 import os
 import csv
 import time
