@@ -10,9 +10,6 @@ More information: Check AERONET Version 3 Web Service Help
 https://aeronet.gsfc.nasa.gov/cgi-bin/print_web_data_v3
 
 """
-
-
-
 import os
 import csv
 import time
