@@ -62,6 +62,7 @@ if __name__ == "__main__":
                     select1 = Select(driver.find_element(By.XPATH, '//*[@id="Year1"]'))
                     select1.select_by_visible_text(str(year))
                 except Exception as e:
+                    print(e, stat, year)
                     print(stat, year, url,
                           file=open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\error.txt', 'a', encoding='utf-8'))
                     continue
@@ -73,7 +74,7 @@ if __name__ == "__main__":
                         checkbox = driver.find_element(By.ID, item)
                         checkbox.click()
                     except Exception as e:
-                        print(e)
+                        print(e, stat, year)
                         print('No such ', item, year, url)
                 checkbox = driver.find_element(By.ID, 'Level15')
                 checkbox.click()
@@ -89,6 +90,7 @@ if __name__ == "__main__":
                         urllib.request.urlretrieve(url, filepath)
                         print('Done ', year, url)
                     except Exception as e:
+                        print(e, stat, year)
                         print(stat, year, url,
                               file=open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\error.txt', 'a', encoding='utf-8'))
 # end
