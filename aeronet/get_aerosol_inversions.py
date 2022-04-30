@@ -17,6 +17,8 @@ import os
 
 
 if __name__ == "__main__":
+    file = open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\error.txt', 'w')
+    file.close()
     ssl._create_default_https_context = ssl._create_unverified_context
     driver = webdriver.Edge()
     downItem = ['VOL', 'RIN', 'SSA']
@@ -45,11 +47,17 @@ if __name__ == "__main__":
             # 模拟检索动作
             try:
                 driver.get(statUrl)
+                for item in downItem:
+                    checkbox = driver.find_element(By.ID, item)
+                    checkbox.click()
+                checkbox = driver.find_element(By.ID, 'Level15')
+                checkbox.click()
             except Exception as e:
+                print(e)
                 print(stat, year, url,
                       file=open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\error.txt', 'a', encoding='utf-8'))
                 continue
-            time.sleep(3)
+            # time.sleep(3)
             for year in range(max(first, 2005), min(last, 2012) + 1):
                 filename = '{0}0101_{0}1231_{1}.zip'.format(year, stat)
                 filepath = r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\{}'.format(filename)
@@ -58,26 +66,17 @@ if __name__ == "__main__":
                     continue
                 url = 'https://aeronet.gsfc.nasa.gov/zip_files_v3/inv/{}'.format(filename)
                 try:
-
                     select1 = Select(driver.find_element(By.XPATH, '//*[@id="Year1"]'))
                     select1.select_by_visible_text(str(year))
                 except Exception as e:
-                    print(e, stat, year)
+                    print(e)
                     print(stat, year, url,
                           file=open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\error.txt', 'a', encoding='utf-8'))
                     continue
 
                 select2 = Select(driver.find_element(By.XPATH, '//*[@id="Year2"]'))
                 select2.select_by_visible_text(str(year))
-                for item in downItem:
-                    try:
-                        checkbox = driver.find_element(By.ID, item)
-                        checkbox.click()
-                    except Exception as e:
-                        print(e, stat, year)
-                        print('No such ', item, year, url)
-                checkbox = driver.find_element(By.ID, 'Level15')
-                checkbox.click()
+
                 submit = driver.find_element(By.NAME, 'Submit')
                 submit.click()
                 time.sleep(30)
@@ -85,12 +84,23 @@ if __name__ == "__main__":
                     urllib.request.urlretrieve(url, filepath)
                     print('Done ', year, url)
                 except Exception as e:
-                    time.sleep(50)
+                    time.sleep(30)
                     try:
                         urllib.request.urlretrieve(url, filepath)
                         print('Done ', year, url)
                     except Exception as e:
-                        print(e, stat, year)
-                        print(stat, year, url,
-                              file=open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\error.txt', 'a', encoding='utf-8'))
+                        time.sleep(30)
+                        try:
+                            urllib.request.urlretrieve(url, filepath)
+                            print('Done ', year, url)
+                        except Exception as e:
+                            time.sleep(30)
+                            try:
+                                urllib.request.urlretrieve(url, filepath)
+                                print('Done ', year, url)
+                            except Exception as e:
+                                print(e, stat, year)
+                                print(stat, year, url,
+                                      file=open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\error.txt', 'a',
+                                                encoding='utf-8'))
 # end
