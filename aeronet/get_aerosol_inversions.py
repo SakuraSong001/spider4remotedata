@@ -62,7 +62,7 @@ if __name__ == "__main__":
                 checkbox.click()
             except Exception as e:
                 print(e)
-                print(stat, year, url,
+                print(stat, url,
                       file=open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\error.txt', 'a', encoding='utf-8'))
                 continue
             # time.sleep(3)
