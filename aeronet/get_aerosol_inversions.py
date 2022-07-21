@@ -12,6 +12,7 @@ import time
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, UnexpectedAlertPresentException
+from selenium.webdriver.edge.options import Options
 from six.moves import urllib
 import os
 
@@ -21,14 +22,21 @@ if __name__ == "__main__":
     file.close()
     ssl._create_default_https_context = ssl._create_unverified_context
     driver = webdriver.Edge()
+
+    # 后台运行
+    edge_options = Options()
+    edge_options.add_argument('--headless')
+    edge_options.add_argument('--disable-gpu')
+    driver = webdriver.Edge(options=edge_options)
+
     downItem = ['VOL', 'RIN', 'SSA']
 
     header = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.30',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/103.0.1264.62 ',
         'Connection': 'keep-alive'
     }
     session = requests.session()
-    statList = np.loadtxt(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\GEO_2.0\AERONET GEO.txt', dtype=str,
+    statList = np.loadtxt(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\GEO_3.0\AERONET GEO 3.0.txt', dtype=str,
                           usecols=0, skiprows=1, delimiter=',')
     for stat in statList:
         sHref = r'https://aeronet.gsfc.nasa.gov/cgi-bin/data_display_inv_v3?site={}' \
