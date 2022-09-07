@@ -18,11 +18,18 @@ import os
 
 
 if __name__ == "__main__":
-    file = open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\error.txt', 'w')
+    # file = open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\error.txt', 'w')
+    # filepathstr=r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA'
+    # statList = np.loadtxt(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\GEO_3.0\AERONET GEO 3.0.txt', dtype=str, usecols=0, skiprows=1, delimiter=',')
+
+    file = open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\2021\error.txt', 'w')
+    filepathstr=r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\2021'
+    statList = np.loadtxt(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\2021\AERONET GEO.txt', dtype=str, usecols=0, skiprows=1, delimiter=',')
     file.close()
     ssl._create_default_https_context = ssl._create_unverified_context
     driver = webdriver.Edge()
-
+    begin = 2021
+    end = 2021
     # 后台运行
     edge_options = Options()
     edge_options.add_argument('--headless')
@@ -36,8 +43,6 @@ if __name__ == "__main__":
         'Connection': 'keep-alive'
     }
     session = requests.session()
-    statList = np.loadtxt(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\GEO_3.0\AERONET GEO 3.0.txt', dtype=str,
-                          usecols=0, skiprows=1, delimiter=',')
     for stat in statList:
         sHref = r'https://aeronet.gsfc.nasa.gov/cgi-bin/data_display_inv_v3?site={}' \
                 r'&nachal=2&level=2&place_code=10&DATA_TYPE=76'.format(stat)
@@ -51,7 +56,7 @@ if __name__ == "__main__":
         last = int(date[4])
         statUrl = 'https://aeronet.gsfc.nasa.gov' + statHref.replace('®', '&re')
         print('\n', first, last, stat, statUrl)
-        if 2005 <= first <= 2012 or 2005 <= last <= 2012 or (first <= 2005 and last >= 2012):
+        if begin <= first <= end or begin <= last <= end or (first <= begin and last >= end):
             # 模拟检索动作
             try:
                 driver.get(statUrl)
@@ -63,12 +68,12 @@ if __name__ == "__main__":
             except Exception as e:
                 print(e)
                 print(stat, url,
-                      file=open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\error.txt', 'a', encoding='utf-8'))
+                      file=open(filepathstr+r'\error.txt', 'a', encoding='utf-8'))
                 continue
             # time.sleep(3)
-            for year in range(max(first, 2005), min(last, 2012) + 1):
+            for year in range(max(first, begin), min(last, end) + 1):
                 filename = '{0}0101_{0}1231_{1}.zip'.format(year, stat)
-                filepath = r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\{}'.format(filename)
+                filepath = filepathstr+r'\{}'.format(filename)
                 if os.path.exists(filepath):
                     print('Done ', year)
                     continue
@@ -79,7 +84,7 @@ if __name__ == "__main__":
                 except Exception as e:
                     print(e)
                     print(stat, year, url,
-                          file=open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\error.txt', 'a', encoding='utf-8'))
+                          file=open(filepathstr+r'\error.txt', 'a', encoding='utf-8'))
                     continue
 
                 select2 = Select(driver.find_element(By.XPATH, '//*[@id="Year2"]'))
@@ -109,6 +114,6 @@ if __name__ == "__main__":
                             except Exception as e:
                                 print(e, stat, year)
                                 print(stat, year, url,
-                                      file=open(r'F:\WORKSPACE\DBN-PARASOL\AERO_DATA_1.5\SSA\error.txt', 'a',
+                                      file=open(filepathstr+r'\error.txt', 'a',
                                                 encoding='utf-8'))
 # end
