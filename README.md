@@ -1,3 +1,6 @@
+# spider4remotedata - PARASOL
+网站更新后原有的爬虫已经失效，可以通过官方提供的FTP工具+Filezilla规则过滤器实现自定义批量下载。
+可以参考：http://t.csdn.cn/RhUuu
 # spider4remotedata - AERONET  
 本项目提供AERONET AOD SSA FMF等数据，以及PARASOL HDF和哨兵五号SENTINEL-5数据下载连接的批量获取。  
 写在前面的小结：预检索动态资源，正则化工具匹配标签，SELENIUM模拟人为操作。  
