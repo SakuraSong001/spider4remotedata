@@ -1,6 +1,12 @@
 # spider4remotedata - PARASOL
-网站更新后原有的爬虫已经失效，可以通过官方提供的FTP工具+Filezilla规则过滤器实现自定义批量下载。
-可以参考：http://t.csdn.cn/RhUuu
+网站更新后原有的爬虫已经失效，可以通过官方提供的FTP工具+Filezilla规则过滤器实现自定义批量下载。  
+参考：[使用正则过滤器实现自定义批量下载parasol卫星数据](http://t.csdn.cn/RhUuu)
+# spider4remotedata - 哨兵五号
+本项目记录的哨兵五号数据批量下载方式需要结合IDM工具，具体实现可以参考以下博客文章。  
+参考：  
+[IDM+Python批量自动化下载哨兵5号数据](http://t.csdn.cn/nFH9M)  
+[使用Python快速获取哥白尼数据开放访问中心购物车里的数据下载链接](http://t.csdn.cn/3gbLn)  
+[使用IDM批量下载Sentinel(哨兵)卫星数据](http://t.csdn.cn/7JPGV)  
 # spider4remotedata - AERONET  
 本项目提供AERONET AOD SSA FMF等数据，以及PARASOL HDF和哨兵五号SENTINEL-5数据下载连接的批量获取。  
 写在前面的小结：预检索动态资源，正则化工具匹配标签，SELENIUM模拟人为操作。  
